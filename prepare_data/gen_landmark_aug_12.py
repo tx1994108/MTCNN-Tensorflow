@@ -52,7 +52,7 @@ def GenerateData(ftxt, output,net,argument=False):
     elif net == "ONet":
         size = 48
     else:
-        print 'Net type error'
+        print ('Net type error')
         return
     image_id = 0
     f = open(join(OUTPUT,"landmark_%s_aug.txt" %(size)),'w')
@@ -62,7 +62,7 @@ def GenerateData(ftxt, output,net,argument=False):
     idx = 0
     #image_path bbox landmark(5*2)
     for (imgPath, bbox, landmarkGt) in data:
-        #print imgPath
+        print (imgPath)
         F_imgs = []
         F_landmarks = []        
         img = cv2.imread(imgPath)
@@ -83,7 +83,7 @@ def GenerateData(ftxt, output,net,argument=False):
         if argument:
             idx = idx + 1
             if idx % 100 == 0:
-                print idx, "images done"
+                print (idx, "images done")
             x1, y1, x2, y2 = gt_box
             #gt's width
             gt_w = x2 - x1 + 1
@@ -104,7 +104,7 @@ def GenerateData(ftxt, output,net,argument=False):
                 if nx2 > img_w or ny2 > img_h:
                     continue
                 crop_box = np.array([nx1,ny1,nx2,ny2])
-                cropped_im = img[ny1:ny2+1,nx1:nx2+1,:]
+                cropped_im = img[int(ny1):int(ny2+1),int(nx1):int(nx2+1),:]
                 resized_im = cv2.resize(cropped_im, (size, size))
                 #cal iou
                 iou = IoU(crop_box, np.expand_dims(gt_box,0))
@@ -160,7 +160,7 @@ def GenerateData(ftxt, output,net,argument=False):
             #print F_imgs.shape
             #print F_landmarks.shape
             for i in range(len(F_imgs)):
-                print image_id
+                print (image_id)
 
                 if np.sum(np.where(F_landmarks[i] <= 0, 1, 0)) > 0:
                     continue
@@ -185,7 +185,7 @@ if __name__ == '__main__':
     # train data
     net = "PNet"
     #train_txt = "train.txt"
-    train_txt = "trainImageList.txt"
+    train_txt = "DeepLandmark/trainImageList.txt"
     imgs,landmarks = GenerateData(train_txt, OUTPUT,net,argument=True)
     
    
