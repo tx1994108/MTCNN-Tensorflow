@@ -1,4 +1,4 @@
-#coding:utf-8
+# coding:utf-8
 import tensorflow as tf
 import os
 import cv2
@@ -62,6 +62,8 @@ def _convert_to_example(image_example, image_buffer, colorspace=b'RGB', channels
         'image/image_bbox/ymax': _float_feature(ymax),
     }))
     return example
+
+
 def _convert_to_example_simple(image_example, image_buffer):
     """
     covert to tfrecord file
@@ -90,7 +92,6 @@ def _convert_to_example_simple(image_example, image_buffer):
         'image/landmark': _float_feature(landmark)
     }))
     return example
-
 
 
 class ImageCoder(object):
@@ -153,7 +154,7 @@ def _process_image(filename, coder):
     # image_data = sess.run(tf.cast(resized_image, tf.uint8)).tobytes()
     # image = Image.open(filename)  # 图片的类型必须为array
     filename = filename + '.jpg'
-    print filename
+    print(filename)
     image = cv2.imread(filename)
     # image.show()
     # image_data = image.tobytes()
@@ -175,6 +176,8 @@ def _process_image(filename, coder):
     assert image.shape[2] == 3
 
     return image_data, height, width
+
+
 def _process_image_withoutcoder(filename):
     image = cv2.imread(filename)
     image_data = image.tostring()

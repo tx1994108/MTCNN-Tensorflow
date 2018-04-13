@@ -7,3 +7,7 @@
 *.ipynb*
 *.jpg
 *.zip
+data/
+imglists/
+.vscode/
+logs/
