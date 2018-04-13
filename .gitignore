@@ -11,3 +11,4 @@ data/
 imglists/
 .vscode/
 logs/
+*.pkl
