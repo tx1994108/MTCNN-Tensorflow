@@ -3,9 +3,11 @@ import time
 import numpy as np
 import sys
 sys.path.append("../")
+sys.path.append("/home/lyy/projects/MTCNN-Tensorflow/Detection")
+print('mtcnndetect path : ',sys.path)
 from train_models.MTCNN_config import config
 from nms import py_nms
-
+# import nms
 
 class MtcnnDetector(object):
 

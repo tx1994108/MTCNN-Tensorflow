@@ -1,14 +1,5 @@
 # encoding: utf-8
 
-"""
-@version: 1.0
-@author: liuhengli
-@license: Apache Licence
-@software: PyCharm
-@file: train.py
-@time: 2017/7/25 9:04
-"""
-
 import os
 import numpy as np
 import cv2
@@ -29,7 +20,7 @@ def read_annotation(base_dir, label_path):
         imagepath = labelfile.readline().strip('\n')
         if not imagepath:
             break
-        imagepath = base_dir + '/WIDER_train/images/' + imagepath
+        imagepath = base_dir + '/WIDER/WIDER_train/images/' + imagepath
         images.append(imagepath)
         # face numbers
         nums = labelfile.readline().strip('\n')
@@ -129,21 +120,3 @@ def IoU(box, bboxes):
     over = inter / (box_area + areas - inter)
 
     return over
-
-
-
-
-if __name__ == '__main__':
-    dir = '/media/thinkjoy/新加卷/dataset/widerface/wider_face_split/wider_face_train_bbx_gt.txt'
-    base_dir = '/media/thinkjoy/新加卷/dataset/widerface'
-    data = read_annotation(base_dir, dir)
-    print('\n')
-    print(data['images'])
-    print("============")
-    print('\n')
-    print(data['bboxes'])
-
-
-
-
-

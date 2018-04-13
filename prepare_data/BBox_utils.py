@@ -47,9 +47,16 @@ def getDataFromTxt(txt, with_landmark=True):
     for line in lines:
         line = line.strip()
         components = line.split(' ')
-        componentss = components[0].split('\\')[0]+'/'+components[0].split('\\')[1]
+        # print(components)
+
+        # PNet
+        # componentss = components[0].split('\\')[0]+'/'+components[0].split('\\')[1]
         # print('***coms:',components)
-        img_path = os.path.join(dirname, componentss) # file path
+        # print(dirname)
+        # img_path = os.path.join(dirname, components[0]) # file path
+
+        # RNet
+        img_path = os.path.join("DeepLandmark/", components[0]) # file path        
         # print('***img_path:',img_path)
         # bounding box, (x1, y1, x2, y2)
         #bbox = (components[1], components[2], components[3], components[4])

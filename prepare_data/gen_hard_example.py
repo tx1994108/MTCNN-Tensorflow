@@ -5,7 +5,7 @@ sys.path.insert(0,'..')
 import numpy as np
 import argparse
 import os
-import cPickle as pickle
+import pickle
 import cv2
 from train_models.mtcnn_model import P_Net,R_Net
 from train_models.MTCNN_config import config
@@ -41,8 +41,8 @@ def save_hard_example(net, data,save_path):
     #read detect result
     det_boxes = pickle.load(open(os.path.join(save_path, 'detections.pkl'), 'rb'))
     # print(len(det_boxes), num_of_images)
-    print len(det_boxes)
-    print num_of_images
+    print (len(det_boxes))
+    print (num_of_images)
     assert len(det_boxes) == num_of_images, "incorrect detections or ground truths"
 
     # index of neg, pos and part face, used as their image names
@@ -155,6 +155,7 @@ def t_net(prefix, epoch,
     filename = './wider_face_train_bbx_gt.txt'
     #read annatation(type:dict)
     data = read_annotation(basedir,filename)
+    print("*****************data : ",type(data))
     mtcnn_detector = MtcnnDetector(detectors=detectors, min_face_size=min_face_size,
                                    stride=stride, threshold=thresh, slide_window=slide_window)
     print("==================================")
@@ -172,7 +173,7 @@ def t_net(prefix, epoch,
         save_net = "ONet"
     #save detect result
     save_path = os.path.join(data_dir, save_net)
-    print save_path
+    print (save_path)
     if not os.path.exists(save_path):
         os.mkdir(save_path)
 
@@ -218,7 +219,7 @@ if __name__ == '__main__':
     if net == "ONet":
         image_size = 48
 
-    base_dir = '../prepare_data/WIDER_train'
+    base_dir = '../prepare_data/WIDER/WIDER_train'
     data_dir = '%s' % str(image_size)
     
     neg_dir = get_path(data_dir, 'negative')
@@ -231,8 +232,8 @@ if __name__ == '__main__':
 
     args = parse_args()
 
-    print 'Called with argument:'
-    print args 
+    print ('Called with argument:')
+    print (args )
     t_net(args.prefix,#model param's file
           args.epoch, #final epoches
           args.batch_size, #test batch_size 

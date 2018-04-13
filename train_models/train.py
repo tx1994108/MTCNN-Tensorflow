@@ -107,7 +107,7 @@ def train(net_factory, prefix, end_epoch, base_dir,
         print (dataset_dir)
         image_batch, label_batch, bbox_batch,landmark_batch = read_single_tfrecord(dataset_dir, config.BATCH_SIZE, net)
         
-    #RNet use 3 tfrecords to get data    
+    #RNet use 4 tfrecords to get data    
     else:
         pos_dir = os.path.join(base_dir,'pos_landmark.tfrecord_shuffle')
         part_dir = os.path.join(base_dir,'part_landmark.tfrecord_shuffle')

@@ -69,7 +69,7 @@ def run(dataset_dir, net, output_dir, name='MTCNN', shuffling=False):
 
 
 def get_dataset(dir, net='PNet'):
-    #item = 'imglists/PNet/train_%s_raw.txt' % net
+    # item = 'imglists/PNet/train_%s_raw.txt' % net
     item = 'imglists/PNet/train_%s_landmark.txt' % net
     
     dataset_dir = os.path.join(dir, item)
