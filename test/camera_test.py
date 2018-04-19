@@ -29,9 +29,9 @@ videopath = "./video_test.avi"
 mtcnn_detector = MtcnnDetector(detectors=detectors, min_face_size=min_face_size,
                                stride=stride, threshold=thresh, slide_window=slide_window)
 
-video_capture = cv2.VideoCapture(videopath)
-video_capture.set(3, 340)
-video_capture.set(4, 480)
+video_capture = cv2.VideoCapture(0)
+video_capture.set(3, 680)
+video_capture.set(4, 960)
 corpbbox = None
 while True:
     # fps = video_capture.get(cv2.CAP_PROP_FPS)
@@ -41,7 +41,7 @@ while True:
         image = np.array(frame)
         boxes_c,landmarks = mtcnn_detector.detect(image)
         
-        print landmarks.shape
+        print(landmarks.shape)
         t2 = cv2.getTickCount()
         t = (t2 - t1) / cv2.getTickFrequency()
         fps = 1.0 / t
@@ -57,14 +57,14 @@ while True:
         cv2.putText(frame, '{:.4f}'.format(t) + " " + '{:.3f}'.format(fps), (10, 20), cv2.FONT_HERSHEY_SIMPLEX, 0.5,
                     (255, 0, 255), 2)
         for i in range(landmarks.shape[0]):
-            for j in range(len(landmarks[i])/2):
+            for j in range(int(len(landmarks[i])/2)):
                 cv2.circle(frame, (int(landmarks[i][2*j]),int(int(landmarks[i][2*j+1]))), 2, (0,0,255))            
         # time end
         cv2.imshow("", frame)
         if cv2.waitKey(1) & 0xFF == ord('q'):
             break
     else:
-        print 'device not find'
+        print('device not find')
         break
 video_capture.release()
 cv2.destroyAllWindows()

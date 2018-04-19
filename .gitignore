@@ -12,3 +12,4 @@ imglists/
 .vscode/
 logs/
 *.pkl
+*.py.swp

@@ -2,7 +2,6 @@ import cv2
 import numpy as np
 
 
-
 def get_minibatch(imdb, num_classes, im_size):
     # im_size: 12, 24 or 48
     num_images = len(imdb)

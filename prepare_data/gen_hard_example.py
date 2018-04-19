@@ -28,7 +28,6 @@ def save_hard_example(net, data,save_path):
 
     print("processing %d images in total" % num_of_images)
 
-    
     # save files
     neg_label_file = "%d/neg_%d.txt" % (net, image_size)
     neg_file = open(neg_label_file, 'w')

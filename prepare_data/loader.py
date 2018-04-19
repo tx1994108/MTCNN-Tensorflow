@@ -3,6 +3,7 @@ import minibatch
 import sys
 import cv2
 sys.path.append("../")
+sys.path.append("./")
 from train_models.MTCNN_config import config
 
 

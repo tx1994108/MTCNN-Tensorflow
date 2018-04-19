@@ -29,8 +29,9 @@ def _add_to_tfrecord(filename, image_example, tfrecord_writer):
 
 def _get_output_filename(output_dir, name, net):
     #st = time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())
-    #return '%s/landmark_landmark.tfrecord' % (output_dir)
-    return '%s/neg_landmark.tfrecord' % (output_dir)
+    #return '%s/%s_%s_%s.tfrecord' % (output_dir, name, net, st)
+    #return '%s/train_PNet_landmark.tfrecord' % (output_dir)
+    return '%s/landmark_landmark.tfrecord' % (output_dir)
     
 
 def run(dataset_dir, net, output_dir, name='MTCNN', shuffling=False):
@@ -72,8 +73,8 @@ def run(dataset_dir, net, output_dir, name='MTCNN', shuffling=False):
 def get_dataset(dir, net='PNet'):
     #item = 'imglists/PNet/train_%s_raw.txt' % net
     #item = 'imglists/PNet/train_%s_landmark.txt' % net
-    #item = '%s/landmark_%s_aug.txt' % (net,net)
-    item = '%s/neg_%s.txt' % (net,net)
+    # item = '%s/landmark_%s_aug.txt' % (net,net)
+    item = '%s/landmark_%s_aug.txt' % (net,net)    
     print (item )
     dataset_dir = os.path.join(dir, item)
     imagelist = open(dataset_dir, 'r')

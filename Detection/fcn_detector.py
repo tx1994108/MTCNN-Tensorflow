@@ -8,8 +8,8 @@ from train_models.MTCNN_config import config
 
 
 class FcnDetector(object):
-    #net_factory: which net
-    #model_path: where the params'file is
+    # net_factory: which net
+    # model_path: where the params'file is
     def __init__(self, net_factory, model_path):
         #create a graph
         graph = tf.Graph()
